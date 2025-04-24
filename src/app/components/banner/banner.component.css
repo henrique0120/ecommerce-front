@@ -1,0 +1,48 @@
+.container__banner{
+  background-color: #EFF3F4;
+  display: flex;
+  flex-direction: row;
+  padding-left: 120px;
+  padding-right: 120px;
+  height: 520px;
+}
+
+.banner_text{
+  padding-top: 80px;
+  width: 700px;
+}
+
+.banner_text > h1{
+  color: #112430;
+  font-size: 75px;
+
+}
+
+.banner_desc > p{
+  color: #112430;
+  font-weight: 600;
+  margin-bottom: 22px;
+}
+
+.banner_right{
+
+  height: 100%;
+  width: 62%;
+}
+
+.banner_right > img{
+  width: 100%;
+  height: 100%;
+}
+
+button{
+  background-color: #112430;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  font-weight: 450;
+}
