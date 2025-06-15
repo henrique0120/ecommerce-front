@@ -1,5 +1,5 @@
 import { InjectionToken } from "@angular/core";
-import { IProductService } from "./api-products/iproducts.service";
+import { IProductService } from "./api-products/iproduct.service";
 
 export const SERVICES_TOKEN = {
   HTTP: {

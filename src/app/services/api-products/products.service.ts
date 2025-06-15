@@ -1,4 +1,4 @@
-import { IProductService } from "./iproducts.service";
+import { IProductService } from "./iproduct.service";
 import { environment } from '../../../../src/app/environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { ProductDetailResponse, SaveProductRequest, SaveProductResponse } from "./product.models";
@@ -15,7 +15,7 @@ export class ProductsService implements IProductService {
 
   constructor(private http: HttpClient) { }
 
-  
+
   findProduct(name:string): Observable<ProductDetailResponse> {
     return this.http.get<ProductDetailResponse>(`${this.basePath}product/find/${name}`)
   }
