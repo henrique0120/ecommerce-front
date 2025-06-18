@@ -17,7 +17,7 @@ export class LoginService implements ILoginService {
   constructor(private http: HttpClient) { }
 
   checkUser(request: LoginRequest): Observable<LoginResponse> {
-    throw new Error("Method not implemented.");
+    return this.http.post<LoginResponse>(`${this.basePath}/login`, request);
   }
 
 }
