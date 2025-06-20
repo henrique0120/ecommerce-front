@@ -4,6 +4,7 @@ import { FormsModule, NgForm, ReactiveFormsModule } from '@angular/forms';
 import {MatInputModule} from '@angular/material/input';
 import { LoginService } from '../../services/api-login/login.service';
 import { LoginRequest } from '../../services/api-login/login.models';
+import { LocalStorageService } from '../../local-storage.service';
 
 @Component({
   selector: 'app-login',
@@ -16,7 +17,8 @@ export class LoginComponent {
   email = ''
   password = ''
 
-  constructor(private loginService: LoginService) {}
+  constructor(private loginService: LoginService, private localStorageService: LocalStorageService) {}
+
 
   onSubmit(form: NgForm) {
     if (form.invalid) return;
@@ -29,7 +31,7 @@ export class LoginComponent {
     this.loginService.checkUser(loginRequest).subscribe({
       next: (response) => {
         console.log('Login com sucesso:', response);
-        localStorage.setItem('token', response.token);
+        this.localStorageService.setItem('token', response.token);
       },
       error: (err) => {
         console.error('Erro ao fazer login:', err);
