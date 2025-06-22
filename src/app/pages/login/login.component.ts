@@ -5,6 +5,8 @@ import {MatInputModule} from '@angular/material/input';
 import { LoginService } from '../../services/api-login/login.service';
 import { LoginRequest } from '../../services/api-login/login.models';
 import { LocalStorageService } from '../../local-storage.service';
+import { AuthService } from '../../auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -17,7 +19,9 @@ export class LoginComponent {
   email = ''
   password = ''
 
-  constructor(private loginService: LoginService, private localStorageService: LocalStorageService) {}
+  constructor(private loginService: LoginService, private localStorageService: LocalStorageService,
+    private AuthService: AuthService, private Router: Router
+  ) {}
 
 
   onSubmit(form: NgForm) {
@@ -31,7 +35,8 @@ export class LoginComponent {
     this.loginService.checkUser(loginRequest).subscribe({
       next: (response) => {
         console.log('Login com sucesso:', response);
-        this.localStorageService.setItem('token', response.token);
+        this.AuthService.saveToken(response.token);
+        this.Router.navigate(['/detail']);
       },
       error: (err) => {
         console.error('Erro ao fazer login:', err);
