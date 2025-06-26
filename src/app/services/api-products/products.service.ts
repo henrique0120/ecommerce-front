@@ -11,10 +11,9 @@ import { Injectable } from "@angular/core";
 
 export class ProductsService implements IProductService {
 
-   private readonly basePath = environment.apiUrl
+  private readonly basePath = environment.apiUrl
 
   constructor(private http: HttpClient) { }
-
 
   findProduct(name:string): Observable<ProductDetailResponse> {
     return this.http.get<ProductDetailResponse>(`${this.basePath}product/find/${name}`)
